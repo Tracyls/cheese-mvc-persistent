@@ -11,7 +11,7 @@ public class Category {
 
     @Id
     @GeneratedValue
-    public int id;
+    private int id;
 
 
     @NotNull
@@ -37,4 +37,7 @@ public class Category {
     public int getId() {
         return id;
     }
+
+    public List<Cheese> getCheeses() {return cheeses; }
+
 }
