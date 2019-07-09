@@ -30,8 +30,8 @@ public class MenuController {
     @RequestMapping(value = "")
     public String index(Model model) {
 
-        model.addAttribute("menus", menuDao.findAll());
         model.addAttribute("title", "Menus");
+        model.addAttribute("menus", menuDao.findAll());
         return "menu/index";
     }
 
@@ -76,11 +76,11 @@ public class MenuController {
     }
 
     @RequestMapping(value="add-item/{menuId}", method = RequestMethod.POST)
-    public String addItem(Model model, @ModelAttribute @Valid AddMenuItemForm itemForm, Errors errors, @PathVariable int menuId){
+    public String addItem(Model model, @ModelAttribute @Valid AddMenuItemForm itemForm, Errors errors){
 
         if (errors.hasErrors()) {
             model.addAttribute("Title", "Add Item");
-            return "menu/add-item/" + menuId;
+            return "menu/add-item/";
         }
 
         Menu menu = menuDao.findOne(itemForm.getMenuId());
